@@ -42,7 +42,7 @@ export const LoginForm = () => {
           <SubmitButton>Entrar</SubmitButton>
         )}
 
-        <Error error={error} />
+        <Error error={error && "Dados incorretos."} />
       </form>
 
       <Link className={styles.forget} to="/login/lost">

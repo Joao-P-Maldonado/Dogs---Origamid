@@ -15,6 +15,7 @@
 .form {
   max-width: 30rem;
   padding: 1rem;
+  margin-top: 20vh;
 }
 
 @media (max-width: 40rem) {
@@ -25,7 +26,7 @@
     display: none;
   }
 
-  .form{
+  .form {
     max-width: 100%;
   }
 }
