@@ -2,6 +2,7 @@ import { USER_POST } from "@Api/Api";
 import { SubmitButton } from "@Components/buttons/submitButton";
 import { FormInput } from "@Components/forms/input";
 import { Error } from "@Components/helpers/error";
+import Head from "@Components/helpers/head";
 import { UserContext } from "@Context/UserContext";
 import useFetch from "@Hooks/useFetch";
 import { useForm } from "@Hooks/useForm";
@@ -30,6 +31,7 @@ export const Register = () => {
 
   return (
     <section className="animeLeft">
+      <Head title="Cria sua conta" />
       <h1 className="title">Cadastre-se</h1>
       <form onSubmit={handleSubmit}>
         <FormInput label="Usuário" type="text" name="username" {...username} />

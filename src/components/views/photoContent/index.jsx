@@ -1,4 +1,5 @@
 import { PHOTO_DELETE } from "@Api/Api";
+import ImageSkeleton from "@Components/image/skeleton";
 import { UserContext } from "@Context/UserContext";
 import useFetch from "@Hooks/useFetch";
 import React, { useContext } from "react";
@@ -6,29 +7,34 @@ import { Link } from "react-router-dom";
 import Comments from "./comments";
 import styles from "./photoContent.module.css";
 
-const PhotoContent = ({ photo, comments }) => {
+const PhotoContent = ({ photo, comments, single }) => {
   const user = useContext(UserContext);
-  const { data, error, loading, request } = useFetch();
+  const { request } = useFetch();
 
-  async function handleDelete(photoId) {
+  async function handleDelete() {
+    const confirm = window.confirm("Certeza que deseja deletar esta foto ? ");
+    if (!confirm) return;
+
     const token = window.localStorage.getItem("token");
 
-    const { url, options } = PHOTO_DELETE(photoId, token);
+    const { url, options } = PHOTO_DELETE(photo.id, token);
     const { response, json } = await request(url, options);
+
+    if (response.ok) window.location.reload();
   }
 
   return (
-    <div className={styles.photo}>
+    <div className={`${styles.photo} ${single ? styles.single : ""}`}>
       <div className={styles.img}>
-        <img src={photo.src} alt={photo.title} />
+        <ImageSkeleton src={photo.src} alt={photo.title} />
       </div>
 
       <div className={styles.details}>
         <p className={styles.author}>
           {user?.data && user?.data?.username === photo.author ? (
-            <div>
-              <button onClick={() => handleDelete(photo.id)}>Deletar</button>
-            </div>
+            <button className={styles.delete} onClick={() => handleDelete}>
+              Deletar
+            </button>
           ) : (
             <Link to={`/profile/${photo.author}`}>@{photo.author}</Link>
           )}
@@ -46,7 +52,7 @@ const PhotoContent = ({ photo, comments }) => {
         </ul>
       </div>
 
-      <Comments photoId={photo.id} oldComments={comments} />
+      <Comments single photoId={photo.id} oldComments={comments} />
     </div>
   );
 };

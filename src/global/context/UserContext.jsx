@@ -71,7 +71,6 @@ export const UserProvider = ({ children }) => {
       setLogin(true);
       navigate("/account");
     } catch (err) {
-      console.log(err.message);
       setError(err.message);
       setLogin(false);
     } finally {

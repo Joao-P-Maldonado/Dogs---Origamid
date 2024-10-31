@@ -1,5 +1,4 @@
 import AddPhoto from "@Assets/images/adicionar.svg?react";
-import Statics from "@Assets/images/estatisticas.svg?react";
 import MyPhotos from "@Assets/images/feed.svg?react";
 import Exit from "@Assets/images/sair.svg?react";
 import { UserContext } from "@Context/UserContext";
@@ -44,10 +43,6 @@ export const HeaderNav = () => {
         <NavLink to="/account" end>
           <MyPhotos />
           {mobile && "Minhas Fotos"}
-        </NavLink>
-        <NavLink to="/account/statics">
-          <Statics />
-          {mobile && "Estatísticas"}
         </NavLink>
         <NavLink to="/account/post">
           <AddPhoto />

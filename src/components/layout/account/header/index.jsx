@@ -1,10 +1,10 @@
+import Head from "@Components/helpers/head/index";
 import { HeaderNav } from "@Components/layout/account/headerNav";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import styles from "./header.module.css";
 
 const titles = {
-  statics: "Estatísticas",
   post: "Postar Foto",
 };
 
@@ -19,6 +19,7 @@ const HeaderAccount = () => {
 
   return (
     <header className={styles.header}>
+      <Head title="Perfil" />
       <h1 className="title">{title}</h1>
       <HeaderNav />
     </header>

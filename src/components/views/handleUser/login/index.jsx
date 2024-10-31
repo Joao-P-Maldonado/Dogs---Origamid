@@ -2,6 +2,7 @@ import { SubmitButton } from "@Components/buttons/submitButton";
 import stylesBtn from "@Components/buttons/submitButton/button.module.css";
 import { FormInput } from "@Components/forms/input";
 import { Error } from "@Components/helpers/error";
+import Head from "@Components/helpers/head/index";
 import { UserContext } from "@Context/UserContext";
 import { useForm } from "@Hooks/useForm";
 import React, { useContext } from "react";
@@ -23,6 +24,7 @@ export const LoginForm = () => {
 
   return (
     <section className="animeLeft">
+      <Head title="Login" />
       <h1 className="title">Login</h1>
       <form className={styles.form} action="" onSubmit={handleSubmit}>
         <FormInput label="Usuário" type="text" name="username" {...userName} />
@@ -43,7 +45,7 @@ export const LoginForm = () => {
         <Error error={error} />
       </form>
 
-      <Link className={styles.forget} to="/login/create">
+      <Link className={styles.forget} to="/login/lost">
         Perdeu a senha?
       </Link>
 

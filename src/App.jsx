@@ -7,11 +7,13 @@ import { AppRoutes } from "./routes";
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <BrowserRouter>
         <UserProvider>
           <Header />
-          <AppRoutes />
+          <main className="AppBody">
+            <AppRoutes />
+          </main>
           <Footer />
         </UserProvider>
       </BrowserRouter>

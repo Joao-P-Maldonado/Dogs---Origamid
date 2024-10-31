@@ -25,11 +25,9 @@ const PhotoPost = () => {
       body: formData,
     })
       .then((response) => {
-        console.log(response);
         return response.json();
       })
       .then((json) => {
-        console.log(json);
         return json;
       });
   }
@@ -65,10 +63,7 @@ const PhotoPost = () => {
           onChange={({ target }) => setAge(target.value)}
         />
 
-        <input
-          type="file"
-          onChange={({ target }) => setImg(target.files[0])}
-        />
+        <input type="file" onChange={({ target }) => setImg(target.files[0])} />
 
         <button type="submit">Enviar</button>
       </form>

@@ -17,7 +17,7 @@ export const PhotoPost = () => {
   const weight = useForm("number");
   const age = useForm("number");
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
     const formData = new FormData();
@@ -40,7 +40,6 @@ export const PhotoPost = () => {
   }
 
   useEffect(() => {
-    console.log(data);
     if (data) navigate("/account");
   }, [data, navigate]);
 

@@ -1,5 +1,6 @@
 import { UserContext } from "@Context/UserContext";
 import styles from "@CssPages/handleUser.module.css";
+import Error404 from "@Public/Error/404";
 import { LoginForm } from "@Views/handleUser/login";
 import { PasswordLost } from "@Views/handleUser/passwordLost";
 import { PasswordReset } from "@Views/handleUser/passwordReset";
@@ -17,8 +18,9 @@ const HandleUser = () => {
         <Routes>
           <Route path="/" element={<LoginForm />} />
           <Route path="create" element={<Register />} />
-          <Route path="reset" element={<PasswordReset />} />
           <Route path="lost" element={<PasswordLost />} />
+          <Route path="reset" element={<PasswordReset />} />
+          <Route path="*" element={<Error404 />} />
         </Routes>
       </div>
     </section>

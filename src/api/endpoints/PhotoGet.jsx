@@ -8,11 +8,9 @@ const PhotoGet = () => {
 
     fetch(`https://dogsapi.origamid.dev/json/api/photo/${imgId ?? ""}`)
       .then((response) => {
-        console.log(response);
         return response.json();
       })
       .then((json) => {
-        console.log(json);
         return json;
       });
   }

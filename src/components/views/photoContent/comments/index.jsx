@@ -3,7 +3,7 @@ import CommentsForm from "@Views/photoContent/commentsForm/index";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import styles from "./comments.module.css";
 
-const Comments = ({ photoId, oldComments }) => {
+const Comments = ({ photoId, oldComments, single }) => {
   const [comments, setComments] = useState(() => oldComments);
   const { login } = useContext(UserContext);
   const commentsSection = useRef();
@@ -14,7 +14,10 @@ const Comments = ({ photoId, oldComments }) => {
 
   return (
     <>
-      <ul ref={commentsSection} className={styles.comments}>
+      <ul
+        ref={commentsSection}
+        className={`${styles.comments} ${single ? styles.single : ""}`}
+      >
         {comments.map((comment) => (
           <li key={comment.comment_ID}>
             <b>{comment.author}:</b>
@@ -22,7 +25,7 @@ const Comments = ({ photoId, oldComments }) => {
           </li>
         ))}
       </ul>
-      {login && <CommentsForm photoId={photoId} setComments={setComments} />}
+      {login && <CommentsForm single photoId={photoId} setComments={setComments} />}
     </>
   );
 };
